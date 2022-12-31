@@ -1,6 +1,12 @@
 # Arduino-Xmas-Snake-Game
 Automatic snake game using WS2811 RGB lights and FastLED. 
 
+
+https://user-images.githubusercontent.com/68730121/210152619-0fbde874-9a76-46ef-a896-d24cf7b15c4f.mov
+
+
+
+
 ## Description 
  I created this as an xmas project. 
 - (red) snake grows when eating a piece of (green) food 
