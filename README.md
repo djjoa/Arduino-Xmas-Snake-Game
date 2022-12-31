@@ -27,6 +27,7 @@ Merry Christmas and Happy New Year 12/31/22!
 
 ## Notes
 - If using more than 250 lights, power must be injected. There are tons of YouTube videos on how to do this. 
+- I added Snake3.py so everyone could see transition examples from python to C++. Snake3.py is not used in the project; it's just there as a reference. 
 
 ## Resources / References 
 - FastLED: https://fastled.io/docs/3.1/group___colorutils.html
