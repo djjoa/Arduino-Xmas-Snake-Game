@@ -9,6 +9,18 @@ Automatic snake game using WS2811 RGB lights and FastLED.
 
 Merry Christmas and Happy New Year 12/31/22! 
  
+
+# Future Development 
+- mode 1 (colored snake) 
+  - snake food is different color which is appended to the snake. Each snake would be different through randomly generated colors for snake food. 
+- mode 2 (Spanish Lights (pink, yellow, blue, etc))
+- mode 3 (offset shimmer red, yellow)
+  - 1/2 of lights blink red while other blink white 
+  - timer offset 
+  - 1/2 of lights blink 
+- mode 4 ??? 
+
+
 ## Materials List
 - [Arduino Uno](https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/ref=asc_df_B008GRTSV6/?tag=&linkCode=df0&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=8606497603945950419&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008306&hvtargid=pla-457497319401&ref=&adgrpid=67183599252&th=1) 
 - [12v WS2811 LED string lights](https://www.amazon.com/dp/B06XSFT1VK?ref=ppx_yo2ov_dt_b_product_details&th=1) 
