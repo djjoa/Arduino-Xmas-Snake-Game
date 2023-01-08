@@ -53,13 +53,15 @@
 #define BLACK CRGB::Black
 #define WHITE CRGB::White
 
+// Define global delay to slow the animation down 
+#define DELAY 15 // sets the global delay of all actions. Change to hardcoded values if you want variable delay in a function. 
 class Board
 {
 public:
     CRGB board[LED_NUM]; // array of all lights
-    int snake_pos = 0;
-    int snake_len = 1;
-    int food_pos = 0;
+    int snake_pos = 1;
+    int snake_len = 75;
+    int food_pos = 3;
     bool done = false;
 
     Board()
@@ -93,8 +95,7 @@ public:
     }
 
     // Clear game this->board.
-    void clear()
-    {
+    void clear(){
         for (int i = 0; i < LED_NUM; i++)
         {
             // this->board[i] = '_'; //change from ascii to RGB val
@@ -102,16 +103,13 @@ public:
         }
     }
     // Fills the strip with a solid color
-    void fill_color(uint32_t color)
-    {
-        for (int i = 0; i < LED_NUM; i++)
-        {
+    void fill_color(uint32_t color){
+        for (int i = 0; i < LED_NUM; i++){
             this->board[i] = color;
         }
     }
     // Does the flashing animation after the Snake eats every food. 
-    void end_animation()
-    {
+    void end_animation(){
         fill_color(RED);
         FastLED.show();
         delay(500);
@@ -124,15 +122,23 @@ public:
         fill_color(BLUE);
         FastLED.show();
         delay(500);
-        // uncomment the below section to get the incremential rainbow effect
-        // when the game is over
-        for(int i=0; i < LED_NUM ; i++ ){
-        fill_rainbow(board, i, 0, 255 );
-        delay(25); 
+        fill_color(BLACK); // reset the tree back to black before drawing the rainbow 
         FastLED.show();
-    }
-
-}
+        // incremential rainbow effect when the game is over
+        // fills the tree one light at a time 
+        for(int i=0; i < LED_NUM ; i++ ){
+        fill_rainbow(board, i, 0, 255/LED_NUM );
+        FastLED.show();
+        delay(DELAY * 4 ); 
+        }
+        // NOTE UNTESTED 
+        // rotates / oscolates the rainbow up the lenght of the tree after it's filled up
+        for(int i=0; i < 1000 ; i++ ){
+        fill_rainbow(board, LED_NUM, i % 255 , 255/LED_NUM );
+        delay(DELAY ); 
+        FastLED.show();}
+        
+      }
 // sets the gameboard back to the default conditions 
 void reset()
 {
@@ -167,8 +173,7 @@ void add_food()
 
     this->board[this->food_pos] = GREEN;
 }
-}
-;
+};
 
 Board gameboard = Board(); // Initialize the gameboard
 void setup()
@@ -189,7 +194,7 @@ void loop()
         gameboard.act();
 
         // Change this to make the snake move faster or slower 
-        delay(5);
+        delay(DELAY);
     }
     // We won the game
     gameboard.end_animation();
